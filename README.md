@@ -10,16 +10,28 @@ Donate ](https://www.pexels.com/photo/photo-of-man-and-woman-looking-at-the-sky-
 
 ## A word about stages
 
-I need to frequently test things. For this I've set up a Terraform pipeline that creates different environments:
+I need to frequently test things. For this I've set up a Terraform pipeline that creates different stages also known as workspaces in Terraform:
 
 - DEV: a very short-lived environment that is created with limited resources. This instance can be destroyed every night automatically for cost-saving reasons.
 - TST: a near-production system.
 - PRD: production, for cost-saving aspects resources for this environment was reserved at Azure for a long timeframe.
 
-## Prerequisites for Terraform
+For switching between workspaces a script is used in pipelines as well as locally:
 
-- A service principal
-- A storage account for Terraform state file.
+```bash
+#!/bin/bash
+
+echo "*********** Create or select workspace"
+if [ $(terraform workspace list | grep -c "$1") -eq 0 ] ; then
+  echo "Create new workspace $1"
+  terraform workspace new "$1" -no-color
+else
+  echo "Switch to workspace $1"
+  terraform workspace select "$1" -no-color
+fi
+```
+
+## Prerequisites for Terraform
 
 ### Working with secrets
 
@@ -87,7 +99,7 @@ All required credentials are stored in a variable library and are used by the pi
 
 - `storage_account_name`= the name of the storage account, where the terraform state file is located
 - `resource_group_name`= the name of the resource group the storage account is in
-- `container_name`= "tfstate-k8s"
+- `container_name`= "tfstate"
 - `key`= "terraform.tfstate"
 - `subscription_id`= your subscription id
 - `tenant_id`= your tenant id
@@ -124,7 +136,7 @@ If you don't want to make use of pipelines, create an `azure.conf` file with the
 # azure.conf, must be in .gitignore
 storage_account_name="$STORAGE_ACCOUNT"
 resource_group_name="$RESOURCE_GROUP"
-container_name="tfstate-k8s"
+container_name="tfstate"
 key="terraform.tfstate"
 subscription_id="$SUB_ID"
 tenant_id="$TENANT_ID"
