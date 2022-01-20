@@ -140,3 +140,10 @@ $ ./workspacetest.sh DEV
 $ terraform plan -out out.plan
 $ terraform apply out.plan
 ```
+
+## What to do next
+
+You could:
+
+- [deploy a Azure Kubernetes Service (AKS) with portainer and terraform](https://github.com/xware-gmbh/aks-terraform-portainer)
+- [deploy a Portainer business control node on Azure Container Instances (ACI)](https://github.com/xware-gmbh/portainer-control-node-example)
