@@ -1,6 +1,6 @@
 # Terraform quick start guide
 
-I'm using terraform for a couple of projects and I used to write down a small quick start guides for others working on the same projects and of course, for my future self. I now decided to scrap this information altogether and share them publicly. I hope this will help others to get things up and running. I'm also hoping for feedback and improvements I can apply.
+I'm using terraform for a couple of projects and I used to write down small quick start guides for others working on the same projects and of course, for my future self. I now decided to pull together all this information and share them publicly. I hope this will help others to get things up and running. I'm also hoping for feedback and improvements I can apply.
 
 This is a guide for small pockets. I'm only using terraform open source, nothing paid. So everyone can benefit from this.
 
