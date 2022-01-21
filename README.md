@@ -153,6 +153,44 @@ $ terraform plan -out out.plan
 $ terraform apply out.plan
 ```
 
+## Structure of terraform
+
+A Terraform project can be structured in different files. When you are working on your own you can put all in one file. But the bigger your project gets and when more people are working on it, it makes sense to separate things.
+
+### `azure.conf`
+
+Secret management is done like I described it [above](#-working-with-secrets) either in a local `azure.conf` or in variable groups which can be used in pipelines. So for testing locally you would need a `azure.conf` file.
+
+Hint: ensure the container mentioned in the backend configuration is created in the Azure storage.
+
+### `workspacetest.sh`
+
+[This script](#-a-word-about-stages) will be used to switch between workspaces which are used as stages e.g. development (DEV), test (TST) and production (PRD).
+
+### `backend.tf`
+
+I'm storing the state of my infrastructure in general in an Azure storage. You could also define a local storage here if you are testing things and do not share the state with other developers.
+
+### `provider.tf`
+
+The Azure Resource Manager [azurerm](https://registry.terraform.io/providers/hashicorp/azurerm/latest) will be used as provider to create resources. There are a bunch of providers available. I'm mostly using Azure stuff and Proxmox.
+
+### `variables.tf`
+
+This file contains everything which can be adjusted. There are some general variables like Azure region and resource group names, specific variables that are related to the actuale infrastructure we are creating and I'm also defining tags here which are used to organize resources.
+
+### `terraform.tfvars`
+
+This is a special file where you can put the content of variables you are specifying in `variables.tf`. Make sure to never commit this file to a repo. I'm using this for example to store my public ssh key I want to use for the connection to VMs I create with terraform.
+
+### `main.tf`
+
+In this file the magic happens. All the resources are created. You can split this file even further if it becomes too complex.
+
+### `output.tf`
+
+This contains the output terraform is returning when done. I don't need that often.
+
 ## What to do next
 
 You could:
