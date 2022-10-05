@@ -6,7 +6,7 @@ This is a guide for small pockets. I'm only using terraform open source, nothing
 
 ![Man and woman terraforming mars](.images/man-and-woman-terraforming-mars.jpg "Man and woman terraforming mars")
 You will not be terraforming mars after you managed to terraform your infrastructure through pipelines, but it feels quite heroic on a small scale anyway. (Photo by [Jake Young
-Donate ](https://www.pexels.com/photo/photo-of-man-and-woman-looking-at-the-sky-732894/))
+Donate](https://www.pexels.com/photo/photo-of-man-and-woman-looking-at-the-sky-732894/))
 
 ## A word about stages
 
@@ -49,7 +49,8 @@ I'm heavily using environment variables throughout this example. Whenever you se
 ### Service principal
 
 If you need to create a new service principal:
-```
+
+```bash
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$SUB_ID"
 ```
 
@@ -57,7 +58,7 @@ Update the variables `subscription_id`, `tenant_id`, `client_id` and `client_sec
 
 Debugging if you have a service principal already and it's not working. One reason can be to have expired credentials.
 
-```
+```bash
 az ad sp list --show-mine
 az role assignment list --assignee $APP_ID
 az ad sp credential reset --name $APP_ID
@@ -66,10 +67,10 @@ az login
 az account set --subscription $SUB_ID
 ```
 
-### Storage account
+### Storage account for state files
 
-```
-$ az storage account create \
+```bash
+az storage account create \
   --name $STORAGE_ACCOUNT \
   --resource-group $RESOURCE_GROUP \
   --kind StorageV2 \
@@ -80,16 +81,16 @@ $ az storage account create \
 
 If you have already a storage account, you can check it with:
 
-```
-$ az account list --output table
-$ az account set --subscription $SUB_ID
-$ az storage account list -g $RESOURCE_GROUP
-$ az storage account show -g $RESOURCE_GROUP -n $STORAGE_ACCOUNT
+```bash
+az account list --output table
+az account set --subscription $SUB_ID
+az storage account list -g $RESOURCE_GROUP
+az storage account show -g $RESOURCE_GROUP -n $STORAGE_ACCOUNT
 ```
 
 If you need to create a container:
 
-```
+```bash
 az storage container create -n tfstate --account-name stdefaultkstjj001 --account-key <YourAzureStorageAccountKey>
 ```
 
@@ -132,7 +133,7 @@ stages:
 
 If you don't want to make use of pipelines, create an `azure.conf` file with the following content. **Important Note**: your `azure.conf` file must be added to your `.gitignore` file and should never be committed to a repository. It must contain something like this:
 
-```
+```conf
 # azure.conf, must be in .gitignore
 storage_account_name="$STORAGE_ACCOUNT"
 resource_group_name="$RESOURCE_GROUP"
@@ -146,11 +147,14 @@ client_secret="$PASSWORD"
 
 Then run the different steps of the pipeline manually. Ensure to use the right workspace name which equals the stage you are going to deploy.
 
-```
-$ terraform init -backend-config=azure.conf
-$ ./workspacetest.sh DEV
-$ terraform plan -out out.plan
-$ terraform apply out.plan
+```bash
+terraform init -backend-config=azure.conf
+./workspacetest.sh DEV
+terraform plan -out out.plan
+terraform apply out.plan
+
+terraform plan -destroy -out out.plan
+terraform apply out.plan
 ```
 
 ## Structure of terraform
@@ -190,6 +194,17 @@ In this file the magic happens. All the resources are created. You can split thi
 ### `output.tf`
 
 This contains the output terraform is returning when done. I don't need that often.
+
+## Working with Azure pipelines, Terraform modules and Proxmox
+
+Often you will create similar ressources e.g. VM's with network security groups and storage. You can create a module so that you don't have to re-do all of this over and over again and most important: when you improve your modules, these improvements can be applies to all your terraform projects which make use of the module. These modules are best organized in a Terraform registry. There is a public one at [registry.terraform.io](https://registry.terraform.io/browse/modules), you can use a private with teh terraform Cloud service and you can also use private git repos. All these options have different pros and cons. I'll show you how to use private git repos as this is an option with many benefits and you are not bound to an additional extaernal service.
+
+Some key aspects you sbhould consider:
+
+- if you want some kind of versioning, you have to work with tags
+- the process is intended to work loosly coupled, meaning every terraform step can be executed with some delay inbetween e.g. for manual gateways. This means terraform files (work results like a created plan file) must be stored.
+- I have some VMs and LXC containers which are provisioned via Proxmox. For those provisioning steps I have a dedicated SSH key pair for the pipeline job in Azure DevOps. I opted for an SSH key with password. Both must be stored in the Azure Pipeline Library side by side which might sound stupid. But when the SSH key get's lost or stolen somehow, changes are still that the password is not stolen and your VM's and LCX's are still save.
+- I have a custom Azure DevOps Build Agent running. For details see: [Run as a systemd service](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops#run-as-a-systemd-service). This agent is required because public build agents are not allowed to access the LAN where Proxmox is located.
 
 ## What to do next
 

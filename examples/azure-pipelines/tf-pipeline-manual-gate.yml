@@ -1,0 +1,77 @@
+ariables:
+#   - group: variable_group_name
+  - name: stateTargetPath
+    value: examples/proxmox/lxc
+  - name: containerImageName
+    value: hashicorp/terraform
+  # - name: containerRegistry # only required for private registries
+  #   value: rigistryServiceConnectionInAzdo
+  - name: version
+    value: "$(Build.BuildNumber)"
+
+parameters:
+  - name: enableSetupDev
+    displayName: enable Infrastructure Setup Dev
+    type: boolean
+    default: true
+  - name: enableSetupTest
+    displayName: enable Infrastructure Setup Test
+    type: boolean
+    default: false
+  - name: enableSetupProd
+    displayName: enable Infrastructure Setup Production
+    type: boolean
+    default: false
+
+trigger:
+  branches:
+    include:
+    - main
+    - feature/*
+    - test/*
+    - fix/*
+  # paths:
+  #   exclude:
+  #   - some-folder/
+
+stages:
+  - stage: DEV
+    displayName: Terraform setup in development environment
+    jobs:
+
+      - template: .ci-templates/tf-plan.yml
+        parameters:
+          environment: "DEV"
+          stateTargetPath: $(stateTargetPath)
+          containerName: ${{ variables.containerImageName }}
+          # containerRegistry: ${{ variables.containerRegistry }} # only required for private registries
+
+      # - template: .ci-templates/wait-for-validation.yml
+      #   parameters:
+      #     environment: "DEV"
+      #     dependsOn: "plan"
+      #     enableSetup: ${{ or( parameters.enableSetupDEV, parameters.enableSetupPDP )}}
+
+      # - template: .ci-templates/tf-apply.yml
+      #   parameters:
+      #     environment: "DEV"
+      #     stateTargetPath: $(stateTargetPath)
+      #     containerName: ${{ variables.containerImageName }}
+      #     # containerRegistry: ${{ variables.containerRegistry }} # only required for private registries
+
+      # - template: .ci-templates/test.yml
+      #   parameters:
+      #     environment: "DEV"
+      #     containerName: ${{ variables.containerImageName }}
+      #     # containerRegistry: ${{ variables.containerRegistry }} # only required for private registries
+
+      # - template: .ci-templates/git-tag.yml
+      #   parameters:
+      #     tag: artifactory-DEV-deploy-$(version)
+      #     environment: "DEV"
+
+      # - template: .ci-templates/wait-for-validation.yml
+      #   parameters:
+      #     environment: "DEV"
+      #     dependsOn: "test"
+      #     enableSetup: ${{ parameters.enableSetupPDP }}

@@ -1,1 +1,7 @@
 /.talismanrc
+**/azure.conf
+**/terraform.tfvars
+**/out.plan
+**/.terraform.lock.hcl
+**/terraform.tfstate.backup
+**/.terraform/
