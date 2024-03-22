@@ -1,0 +1,99 @@
+{
+    "schedules": [
+      {
+        "name": "Upload Schedule",
+        "name_comment": "This schedule seems to be needed by the system. It is not vissible in the UI. Can this be ommitted?",
+        "typ": 0,
+        "typ_sub": 3,
+        "act": 5,
+        "act_sub": 0,
+        "length": 60,
+        "ical": {
+          "st": 1451635260,
+          "et": 1924966860,
+          "freq": 2,
+          "int": 60,
+          "byday": 62,
+          "en": 0
+        },
+        "capture": {
+          "iso": 0,
+          "fps": 24,
+          "flip": 0,
+          "ar": "4/3",
+          "wb": "auto",
+          "es": "auto",
+          "sz": "FULL"
+        }
+      },
+      {
+        "name": "Mega Test",
+        "name_comment 1": "Question: is it of importance which schedule is first in the order? Upload or Photos?",
+        "name_comment 2": "Are always 4 schedules needed in the json file? Or can I only send 1?",
+        "typ": 0,
+        "typ_comment": "Unknown, always 0",
+        "typ_sub": 3,
+        "typ_sub_comment": "Unknown, always 3",
+        "act": 1,
+        "act_comment": "0=Camera On (no shutter), 1=Photo, 3=Video, 9=Upload Backlog Files",
+        "act_sub": 0,
+        "act_sub_comment_0": "If act=0 always 0, see length for duration",
+        "act_sub_comment_1": "If act=1 0=Upload later, 1=Upload immediately, 2=no upload (SD card only)",
+        "act_sub_comment_3": "If act=3 always 0, see length for duration",
+        "act_sub_comment_9": "If act=9 always 0",
+        "length": 60,
+        "length_comment": "Duration in seconds for Camera On (no shutter) and Video.",
+        "ical": {
+          "st": 1451631600,
+          "st_comment": "Example value = Linux time stamp for January 1st 2016 07:00. Start time of the schedule. The date must be in the past. The time is important for the schedule calculation?",
+          "et": 1924970400,
+          "et_comment": "Example value = Linux time stamp for December 31st 2030 07:00. End time of the schedule. The date must be in the future. Cannot be more than 2030? Is this the end of life of your device?",
+          "freq": 2,
+          "freq_comment": "0 = once, 1 = sec, 2 = min, 3 = hour",
+          "int": 5,
+          "int_comment": "interval in unit specified by freq",
+          "byday": 127,
+          "byday_comment_0": "127=Su-Sa",
+          "byday_comment_1": "62=Mo-Fr",
+          "byday_comment_2": "63=Mo-Sa",
+          "en": 1,
+          "en_comment_0": "Schedule enabled 0=no, 1 = yes"
+        },
+        "capture": {
+          "capture_comment": "what are these values about?",
+          "iso": 0,
+          "fps": 24,
+          "flip": 0,
+          "ar": "4/3",
+          "wb": "auto",
+          "es": "auto",
+          "sz": "FULL"
+        }
+      }
+    ],
+    "upload": {
+      "timeout": 7200,
+      "timeout_comment": "upload timeout in seconds",
+      "connect_timeout": 240,
+      "connect_timeout_comment": "connection timeout in seconds",
+      "mode": "LATEST",
+      "mode_comment": "what is this for?",
+      "resolution": "FULL",
+      "resolution_comment": "FULL, LG=Large, MD=medium, SM=small,",
+      "start_time": 1702854000,
+      "start_time_comment": "What is this time for? It is not the current time but also not that old?"
+    },
+    "wifi": {
+      "wifi_comment": "self explaining, connection details. depending on value of internet",
+      "internet": "usb",
+      "internet_comment": "usb=via usb stick 3G / 4G, wifi=wireless lan",
+      "ssid": "",
+      "email": "jan.jambor@xwr.ch",
+      "type": "CloudX",
+      "usba_reset": 0,
+      "locid": ""
+    },
+    "sched_date": 1702998791,
+    "sched_date_comment": "current time when json is send."
+  }
+  

@@ -1,0 +1,10 @@
+/.talismanrc
+**/.DS_Store
+**/azure.conf
+**/*.tfvars
+**/out.plan
+**/.terraform.lock.hcl
+**/terraform.tfstate.backup
+**/.terraform/
+**/terraform.tfstate
+**/*.log

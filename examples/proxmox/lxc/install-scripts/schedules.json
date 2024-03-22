@@ -1,0 +1,108 @@
+{
+  "schedules": [
+    {
+      "name": "Upload Schedule",
+      "typ": 0,
+      "typ_sub": 3,
+      "act": 5,
+      "act_sub": 0,
+      "length": 60,
+      "ical": {
+        "st": 1451635260,
+        "et": 1924966860,
+        "freq": 2,
+        "int": 60,
+        "byday": 62,
+        "en": 0
+      }
+    },
+    {
+      "name": "Photos",
+      "typ": 0,
+      "typ_sub": 3,
+      "act": 1,
+      "act_sub": 0,
+      "length": 22,
+      "ical": {
+        "st": 1451628000,
+        "et": 1924977600,
+        "freq": 2,
+        "int": 5,
+        "byday": 63,
+        "en": 1
+      }
+    },
+    {
+      "name": "Upload",
+      "typ": 0,
+      "typ_sub": 3,
+      "act": 9,
+      "act_sub": 0,
+      "length": 33,
+      "ical": {
+        "st": 1451682120,
+        "et": 1924974120,
+        "freq": 0,
+        "int": 30,
+        "byday": 63,
+        "en": 1
+      }
+    },
+    {
+      "name": "Upload Backup Day",
+      "typ": 0,
+      "typ_sub": 3,
+      "act": 9,
+      "act_sub": 0,
+      "length": 666,
+      "ical": {
+        "st": 1451642520,
+        "et": 1924966800,
+        "freq": 0,
+        "int": 255,
+        "byday": 64,
+        "en": 0
+      }
+    },
+    {
+      "name": "",
+      "typ": 0,
+      "typ_sub": 3,
+      "act": 1,
+      "act_sub": 0,
+      "length": 60,
+      "ical": {
+        "st": 1451635200,
+        "et": 1924966800,
+        "freq": 2,
+        "int": 10,
+        "byday": 62,
+        "en": 0
+      }
+    }
+  ],
+  "upload": {
+    "timeout": 18000,
+    "connect_timeout": 300,
+    "mode": "LATEST",
+    "resolution": "FULL",
+    "start_time": 1702854000
+  },
+  "wifi": {
+    "email": "your@email.com",
+    "type": "SFTP",
+    "internet": "usb",
+    "folder": "/data",
+    "cloudx_update": 0,
+    "usba_reset": 0,
+    "ftp_host": "server",
+    "ftp_port": "22",
+    "ftp_user": "user",
+    "ftp_psk": "pass",
+    "eap_type": "TTLS-MSCHAPV2",
+    "eap_id": "",
+    "eap_psk": "",
+    "locid": ""
+  },
+  "sched_date": 1708527332
+}

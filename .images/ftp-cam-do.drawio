@@ -1,0 +1,75 @@
+<mxfile host="Electron" modified="2023-12-21T15:58:16.543Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="nryM6t1sUwYMJ48uegHm" version="21.7.5" type="device">
+  <diagram name="Page-1" id="F-R69ZxYt4ccWuION2rW">
+    <mxGraphModel dx="1026" dy="744" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-24" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F0F5FD;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="10" width="710" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-10" value="Proxmox Hypervisor" style="rounded=0;whiteSpace=wrap;html=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="429" y="210" width="320" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.4;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="1kzzglyFpiY-FRCKxa2P-4" target="1kzzglyFpiY-FRCKxa2P-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-15" value="sftp" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1kzzglyFpiY-FRCKxa2P-8">
+          <mxGeometry x="0.4682" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-4" value="Cam 1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cam-do.com/cdn/shop/products/base-product-solarup-pack-solar-ac-power-1.png?v=1680733494;" vertex="1" parent="1">
+          <mxGeometry x="79" y="120" width="165.45" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.31;entryY=0.8;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="1kzzglyFpiY-FRCKxa2P-5" target="1kzzglyFpiY-FRCKxa2P-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-16" value="sftp" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1kzzglyFpiY-FRCKxa2P-9">
+          <mxGeometry x="0.2777" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-5" value="Cam 2" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cam-do.com/cdn/shop/products/base-product-solarup-pack-solar-ac-power-1.png?v=1680733494;" vertex="1" parent="1">
+          <mxGeometry x="79" y="420" width="165.45" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="1kzzglyFpiY-FRCKxa2P-6" target="1kzzglyFpiY-FRCKxa2P-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-6" value="Internet" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="269" y="310" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.55;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="1kzzglyFpiY-FRCKxa2P-12" target="1kzzglyFpiY-FRCKxa2P-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-17" value="restic backup" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1kzzglyFpiY-FRCKxa2P-14">
+          <mxGeometry x="0.209" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="1kzzglyFpiY-FRCKxa2P-12" target="1kzzglyFpiY-FRCKxa2P-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-21" value="Daily Short Video of the Day" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1kzzglyFpiY-FRCKxa2P-20">
+          <mxGeometry x="-0.0444" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-12" value="LXC&lt;br&gt;&lt;br&gt;sftp &amp;amp; ffmpeg" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="529" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-13" value="Azure" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="523" y="30" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-18" value="VM Docker&lt;br&gt;&lt;br&gt;Plex" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="529" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-22" value="red = to be done" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="79" y="20" width="121" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1kzzglyFpiY-FRCKxa2P-23" value="yellow = in progress" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="240" y="20" width="121" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

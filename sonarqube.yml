@@ -1,0 +1,32 @@
+
+#
+# Summary: pipeline for running SonarQube analysis and publishing results
+#
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+resources:
+  repositories:
+    - repository: ci-central
+      name: JJsProjects/CiCentral
+      type: git
+      ref: main
+
+pool:
+  name: jjspool
+  demands:
+  - Agent.OS -equals Linux
+
+steps:
+    # SonarQube prepare step
+    - template: ci-templates/sonarqube/sonarqube-prepare.yaml@ci-central
+      parameters:
+        context: ''
+        cliProjectKey: 'JJsProjects_terraform-guide_AYr5SZ7rcQH_tE6Ir7vy'
+
+    # SonarQube analyze and puplish step
+    - template: ci-templates/sonarqube/sonarqube-analyze-publish.yaml@ci-central

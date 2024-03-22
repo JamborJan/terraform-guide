@@ -1,0 +1,16 @@
+http:
+  routers:
+    flrd:
+      entrypoints:
+        - "websecure"
+      middlewares:
+        - "2rockIP@file"
+      service: "flrd"
+      rule: "Host(`flrd.watt.jambor.pro`)"
+      tls:
+        certResolver: "mytlschallenge"
+  services:
+    flrd:
+      loadBalancer:
+        servers:
+          - url: "http://tst-flrd-0.fritz.box/tar1090/"
